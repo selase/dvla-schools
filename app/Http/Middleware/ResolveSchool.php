@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use App\Models\Models\School;
+use App\Models\School;
 use App\Support\CurrentSchool;
 use Symfony\Component\HttpFoundation\Response;
 use Spatie\Permission\PermissionRegistrar;
