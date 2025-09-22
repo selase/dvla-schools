@@ -9,7 +9,7 @@ trait BelongsToSchool
 {
     protected static function bootBelongsToSchool(): void
     {
-        static::creating(function ($model) {
+        static::creating(function ($model): void {
             if (property_exists($model, 'fillable') && in_array('school_id', $model->getFillable(), true)) {
                 $model->school_id ??= CurrentSchool::get()?->id;
             } elseif (isset($model->school_id)) {
@@ -17,7 +17,7 @@ trait BelongsToSchool
             }
         });
 
-        static::addGlobalScope('school', function (Builder $builder) {
+        static::addGlobalScope('school', function (Builder $builder): void {
             if ($school = CurrentSchool::get()) {
                 $builder->where($builder->getModel()->getTable() . '.school_id', $school->id);
             }
